@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy-950: #040812;
+  --navy-900: #0A0F1E;
+  --navy-800: #0D1528;
+  --blue-brand: #1A6BFF;
+  --green-profit: #00D26A;
+  --gold: #F5C518;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #040812;
+  color: #E2E8F0;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0F1E;
+}
+::-webkit-scrollbar-thumb {
+  background: #1A6BFF;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4D8FFF;
+}
+
+/* Selection */
+::selection {
+  background: rgba(26, 107, 255, 0.3);
+  color: #fff;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-blue-brand text-white font-semibold rounded-xl 
+           hover:bg-blue-light transition-all duration-300 hover:shadow-blue-glow hover:-translate-y-0.5 
+           active:translate-y-0 text-sm md:text-base;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white font-semibold rounded-xl 
+           border border-white/20 hover:border-green-profit hover:text-green-profit transition-all duration-300
+           hover:-translate-y-0.5 active:translate-y-0 text-sm md:text-base;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-green-profit text-navy-900 font-bold rounded-xl 
+           hover:bg-green-light transition-all duration-300 hover:shadow-green-glow hover:-translate-y-0.5 
+           active:translate-y-0 text-sm md:text-base;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl;
+  }
+
+  .section-heading {
+    @apply font-heading font-bold text-white leading-tight;
+  }
+
+  .section-tag {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 bg-blue-brand/10 border border-blue-brand/30 
+           rounded-full text-blue-light text-sm font-medium;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-light via-blue-brand to-green-profit bg-clip-text text-transparent;
+  }
+
+  .gradient-text-gold {
+    @apply bg-gradient-to-r from-gold to-yellow-400 bg-clip-text text-transparent;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-card-hover;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500
+           focus:outline-none focus:border-blue-brand focus:bg-white/10 transition-all duration-200;
+  }
+
+  .nav-link {
+    @apply text-slate-300 hover:text-white font-medium transition-colors duration-200 text-sm relative
+           after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-brand 
+           after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .star-rating {
+    @apply flex gap-0.5;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .container-width {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #1A6BFF, #00D26A);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+/* Chart background pattern */
+.chart-bg {
+  background-image: 
+    linear-gradient(rgba(26, 107, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 107, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glow effect for hero */
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+/* Shimmer loading effect */
+.shimmer {
+  background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.05) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Floating animation for hero elements */
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
